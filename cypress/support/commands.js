@@ -5,6 +5,5 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () => {
     cy.get('#email').type('ferreirahelen@teste.com')
     cy.get('#open-text-area').type(longText, { delay: 0 })
     cy.contains('button', 'Enviar').click()
-
     cy.get('.sucess').should('be.visible')
 })

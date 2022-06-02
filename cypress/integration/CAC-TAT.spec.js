@@ -3,14 +3,14 @@
 describe('Central de Atendimento ao Cliente TAT', () => {
 
     beforeEach(() => {
-        cy.visit('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+        cy.visit('./src/index.html')
     })
 
     it('Verifica o título da aplicação', () => {
         cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
     })
 
-    it('Preenche os campos obrigaatórios e envia o formulário', () => {
+    it('Preenche os campos obrigatórios e envia o formulário', () => {
         const longText = 'teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste'
         cy.get('#firstName').type('Helen')
         cy.get('#lastName').type('Ferreira')
@@ -20,7 +20,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         cy.get('.sucess').should('be.visible')
     })
 
-    it('Exibe mensagem de erro ao submeter oformulário com email inválido', () => {
+    it('Exibe mensagem de erro ao submeter o formulário com email inválido', () => {
         cy.get('#firstName').type('Helen')
         cy.get('#lastName').type('Ferreira')
         cy.get('#email').type('ferreirahelen@teste,com')
@@ -38,13 +38,13 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         cy.get('#firstName').type('Helen')
         cy.get('#lastName').type('Ferreira')
         cy.get('#email').type('ferreirahelen@teste.com')
-        cy.get('#phone-checknox').check()
+        cy.get('#phone-checkbox').check()
         cy.get('#open-text-area').type('testando')
         cy.get('button[type="submit"]').click()
         cy.get('.error').should('be.visible')
     })
 
-    it('Preenche os campos obrigaatórios e limpa os campos em seguida', () => {
+    it('Preenche os campos obrigatórios e limpa os campos em seguida', () => {
         const longText = 'teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste'
         cy.get('#firstName')
             .type('Helen')
